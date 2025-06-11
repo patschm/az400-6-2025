@@ -1,0 +1,9 @@
+trigger : none
+
+pool:
+  name: Default
+
+jobs:
+  - job: hello
+    steps:
+      - script: echo "Hello World"

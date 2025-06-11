@@ -1,0 +1,23 @@
+trigger : none
+
+pool:
+  name: Default
+
+parameters:
+  - name: groupName
+    type: string
+    default: 'Staging'
+    displayName: 'Variable Group Name'
+# You define the variable group in the Library in Azure DevOps
+variables:
+  - group: ${{ parameters.groupName }}
+
+jobs:
+  - job: Variables
+    steps:
+    - script: |
+        echo My name is $(First) $(Last)
+        echo My secret is $(Secret)
+        echo My secret is %GEHEIM%
+      env:
+        GEHEIM: $(Secret)
